@@ -7,8 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.HomePage;
-import pages.LoginPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +15,9 @@ public abstract class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
+    AccountListPage accountListPage;
+    AccountModalPage accountModalPage;
+    AccountDetailsPage accountDetailsPage;
 
     @BeforeMethod
     public void setUp() {
@@ -27,6 +29,9 @@ public abstract class BaseTest {
 
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
+        accountListPage = new AccountListPage(driver);
+        accountModalPage = new AccountModalPage(driver);
+        accountDetailsPage = new AccountDetailsPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
