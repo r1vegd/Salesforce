@@ -10,7 +10,6 @@ public abstract class BasePage {
     public static final String BASE_URL = "https://qa09onl-rivegdov.my.salesforce.com/";
     public static final By NEW_BUTTON = By.xpath("//a[@title='New']");
 
-
     WebDriver driver;
     WebDriverWait wait;
 

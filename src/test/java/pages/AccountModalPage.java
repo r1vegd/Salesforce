@@ -5,7 +5,7 @@ import elements.Input;
 import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class AccountModalPage extends BasePage {
     public static final By MODAL_TITLE = By.xpath("//*[contains(@class, 'inlineTitle')]");

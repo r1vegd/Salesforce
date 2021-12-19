@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 
 public class AccountTest extends BaseTest {
 
-    @Test
+    @Test(description = "этот тест проверяет позитивный сценарий создания аккаунта")
     public void accountShouldBeCreated() {
         loginPage
                 .open()
@@ -19,7 +19,7 @@ public class AccountTest extends BaseTest {
                 .isPageOpen();
         assertTrue(isAccountModalOpen, "Pop-up не открылся");
 
-        Account account = new Account("TestAccountName", "www.onliner.by",
+        Account account = new Account(myRandomString, "www.onliner.by",
                 "Investor", "TestSalesforceAQA",
                 "TestAccountName", "+37533373801", "Apparel",
                 "10", "TestBillingStreet",
@@ -44,7 +44,6 @@ public class AccountTest extends BaseTest {
         assertEquals(accountDetailsPage.getDetailsPhone(), account.getPhone(), "Телефон аккаунта не совпадают");
         assertEquals(accountDetailsPage.getFiledValueByName("Industry"), account.getIndustry(), "Индустрия аккаунта");
         assertEquals(accountDetailsPage.getDetailsEmployees(), account.getEmployees(), "Количество работников не совпадает");
-
         assertEquals(accountDetailsPage.getFieldAddressValue("Billing Address"),
                 String.format(account.getBillingStreet() + '\n' + account.getBillingCity() + ", " + account.getBillingState() + " " + account.getBillingPostalCode() + '\n' + account.getBillingCountry()),
                 "Адрес оплаты не совпадает");
