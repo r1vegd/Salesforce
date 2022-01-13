@@ -1,8 +1,10 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class ContactListPage extends BasePage {
     public static final By BREADCRUMBS_CONTACTS = By.xpath("//span[@class='slds-var-p-right_x-small']");
 
@@ -16,7 +18,7 @@ public class ContactListPage extends BasePage {
     }
 
     public ContactListPage open() {
-        driver.get(BASE_URL + "lightning/o/Contact/list");
+        driver.get(BASE_URL + "/lightning/o/Contact/list");
         return this;
     }
 

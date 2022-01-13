@@ -1,6 +1,7 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,8 +11,7 @@ import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.commons.lang.RandomStringUtils.randomAlphanumeric;
-
+@Log4j2
 public abstract class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
@@ -23,13 +23,10 @@ public abstract class BaseTest {
     ContactModalPage contactModalPage;
     ContactDetailsPage contactDetailsPage;
 
-    public static String getMyString(String prefix) {
-        return prefix + randomAlphanumeric(5);
-    }
-    String myRandomString = getMyString("Test");
 
     @BeforeMethod
     public void setUp() {
+        log.info("Запуск браузера");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
@@ -48,6 +45,7 @@ public abstract class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
+        log.info("Закрытие браузера");
         driver.quit();
     }
 
