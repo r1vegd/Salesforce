@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import models.Contact;
 import models.ContactFactory;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -13,7 +14,6 @@ public class ContactTest extends BaseTest {
 
     @Test(description = "этот тест проверяет позитивный сценарий создания контакта")
     public void contactShouldBeCreated() {
-        log.info("Старт теста contactShouldBeCreated");
         loginPage
                 .open()
                 .login("rivegd1-30cu@force.com", "dev123123123");
@@ -51,7 +51,6 @@ public class ContactTest extends BaseTest {
         assertEquals(contactDetailsPage.getDetailsAssistant("Assistant"), contact.getAssistant(), "Assistant не совпадают");
         assertEquals(contactDetailsPage.getDetailsDesc("Description"), contact.getDescription(), "Description не совпадают");
         assertEquals(contactDetailsPage.getDetailsDepartment("Department"), contact.getDepartment(), "Department не совпадают");
-        log.info("Завершение теста contactShouldBeCreated");
     }
 
 }

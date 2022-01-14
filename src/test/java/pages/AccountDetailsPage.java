@@ -44,6 +44,7 @@ public class AccountDetailsPage extends BasePage {
     }
 
     public String getDetailsPhone() {
+        log.info("Get Details Phone");
         return driver.findElement(By.xpath(String.format(phoneDetailsLocator))).getText();
     }
 

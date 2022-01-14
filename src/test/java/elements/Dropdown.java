@@ -25,7 +25,7 @@ public class Dropdown {
     }
 
     public void selectOption(String option) {
-        System.out.printf("Select option '%s' into dropdown with label '%s'", option, this.label);
+        log.info(String.format(">>>>>>>Select %s in dropdown", option));
         driver.findElement(By.xpath(String.format(dropdownLocator, this.label))).click();
         WebDriverWait wait = new WebDriverWait(driver, 3);
         driver.findElement(By.xpath(String.format(optionLocator, option))).click();
@@ -33,12 +33,14 @@ public class Dropdown {
     }
 
     public void selectParentAccount(String parentAccountOption) {
+        log.info(String.format(">>>>>>>Select %s in dropdown", parentAccountOption));
         driver.findElement(By.xpath(String.format(parentAccountLocator))).click();
         WebDriverWait wait = new WebDriverWait(driver, 3);
         driver.findElement(By.xpath(String.format(parentAccountOptionLocator))).click();
     }
 
     public void selectContactDropdown(String option) {
+        log.info(String.format(">>>>>>>Select %s in dropdown", option));
         driver.findElement(By.xpath(String.format(dropdownContactLocator, this.label))).click();
         driver.findElement(By.xpath(String.format(optionContactLocator, option))).click();
     }

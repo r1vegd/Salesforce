@@ -1,4 +1,4 @@
-package tests;
+package tests.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.log4j.Log4j2;
@@ -7,26 +7,28 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
+@Listeners(TestListener.class)
 public abstract class BaseTest {
-    WebDriver driver;
-    LoginPage loginPage;
-    HomePage homePage;
-    AccountListPage accountListPage;
-    AccountModalPage accountModalPage;
-    AccountDetailsPage accountDetailsPage;
-    ContactListPage contactListPage;
-    ContactModalPage contactModalPage;
-    ContactDetailsPage contactDetailsPage;
+    protected WebDriver driver;
+    protected LoginPage loginPage;
+    protected HomePage homePage;
+    protected AccountListPage accountListPage;
+    protected AccountModalPage accountModalPage;
+    protected AccountDetailsPage accountDetailsPage;
+    protected ContactListPage contactListPage;
+    protected ContactModalPage contactModalPage;
+    protected ContactDetailsPage contactDetailsPage;
 
 
     @BeforeMethod
     public void setUp() {
-        log.info("Запуск браузера");
+        log.info("Browser launch");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
@@ -45,7 +47,7 @@ public abstract class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        log.info("Закрытие браузера");
+        log.info("Browser quit");
         driver.quit();
     }
 

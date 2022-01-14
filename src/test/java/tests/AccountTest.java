@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import models.Account;
 import models.AccountFactory;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -13,7 +14,6 @@ public class AccountTest extends BaseTest {
 
     @Test(description = "этот тест проверяет позитивный сценарий создания аккаунта")
     public void accountShouldBeCreated() {
-        log.info("Старт теста accountShouldBeCreated");
         loginPage
                 .open()
                 .login("rivegd1-30cu@force.com", "dev123123123");
@@ -47,7 +47,7 @@ public class AccountTest extends BaseTest {
         assertEquals(accountDetailsPage.getFieldAddressValue("Shipping Address"),
                 String.format(account.getShippingStreet() + '\n' + account.getShippingCity() + ", " + account.getShippingState() + " " + account.getShippingPostalCode() + '\n' + account.getShippingCountry()),
                 "Адрес доставки не совпадает");
-        log.info("Завершение теста accountShouldBeCreated");
+
     }
 
 
