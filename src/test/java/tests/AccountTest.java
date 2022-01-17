@@ -12,16 +12,16 @@ import static org.testng.Assert.assertTrue;
 @Log4j2
 public class AccountTest extends BaseTest {
 
-    @Test(description = "этот тест проверяет позитивный сценарий создания аккаунта")
+    @Test(description = "Positive account create test")
     public void accountShouldBeCreated() {
         loginPage
                 .open()
-                .login("rivegd1-30cu@force.com", "dev123123123");
+                .login(LOGIN, PASSWORD);
         boolean isAccountModalOpen = accountListPage
                 .open()
                 .clickNew()
                 .isPageOpen();
-        assertTrue(isAccountModalOpen, "Pop-up не открылся");
+        assertTrue(isAccountModalOpen, "Pop-up isn't open");
 
         Account account = AccountFactory.getAccount();
 
@@ -29,24 +29,24 @@ public class AccountTest extends BaseTest {
                 .create(account)
                 .isPageOpen();
         accountDetailsPage.detailsTabOpen();
-        assertTrue(isDetailsPageOpen, "Страница Details не открылась");
+        assertTrue(isDetailsPageOpen, "'Details' page isn't open");
 
-        assertEquals(accountDetailsPage.getFiledValueByName("Account Name"), account.getAccountName(), "Имя аккаунта не совпадает");
-        assertEquals(accountDetailsPage.getDetailsParentAccount(), account.getParentAccount(), "Название родительского аккаунта не совпадает");
-        assertEquals(accountDetailsPage.getDetailsPhone(), account.getPhone(), "Телефон аккаунта не совпадают");
-        assertEquals(accountDetailsPage.getDetailsFax(), account.getFax(), "Факсы не совпадают");
-        assertEquals(accountDetailsPage.getDetailsWebsite(), account.getWebsite(), "Название веб-сайта аккаунта не совпадает");
-        assertEquals(accountDetailsPage.getFiledValueByName("Type"), account.getType(), "Тип аккаунта не совпадает");
-        assertEquals(accountDetailsPage.getFiledValueByName("Industry"), account.getIndustry(), "Индустрия аккаунта не совпадает");
-        assertEquals(accountDetailsPage.getFiledValueByName("Description"), account.getDescription(), "Описание аккаунта не совпадает");
-        assertEquals(accountDetailsPage.getDetailsEmployees(), account.getEmployees(), "Количество работников не совпадает");
-        assertEquals(accountDetailsPage.getDetailsAnnualRevenue(), String.format("$" + account.getAnnualRevenue()), "Годовой доход не совпадает");
+        assertEquals(accountDetailsPage.getFiledValueByName("Account Name"), account.getAccountName(), "Account name doesn't match");
+        assertEquals(accountDetailsPage.getDetailsParentAccount(), account.getParentAccount(), "Parent account name doesn't match");
+        assertEquals(accountDetailsPage.getDetailsPhone(), account.getPhone(), "Phone doesn't match");
+        assertEquals(accountDetailsPage.getDetailsFax(), account.getFax(), "Fax doesn't match");
+        assertEquals(accountDetailsPage.getDetailsWebsite(), account.getWebsite(), "Website doesn't match");
+        assertEquals(accountDetailsPage.getFiledValueByName("Type"), account.getType(), "Type doesn't match");
+        assertEquals(accountDetailsPage.getFiledValueByName("Industry"), account.getIndustry(), "Industry doesn't match");
+        assertEquals(accountDetailsPage.getFiledValueByName("Description"), account.getDescription(), "Description doesn't match");
+        assertEquals(accountDetailsPage.getDetailsEmployees(), account.getEmployees(), "Employees qty doesn't match");
+        assertEquals(accountDetailsPage.getDetailsAnnualRevenue(), String.format("$" + account.getAnnualRevenue()), "Annual Revenue doesn't match");
         assertEquals(accountDetailsPage.getFieldAddressValue("Billing Address"),
                 String.format(account.getBillingStreet() + '\n' + account.getBillingCity() + ", " + account.getBillingState() + " " + account.getBillingPostalCode() + '\n' + account.getBillingCountry()),
-                "Адрес оплаты не совпадает");
+                "Billing address doesn't match");
         assertEquals(accountDetailsPage.getFieldAddressValue("Shipping Address"),
                 String.format(account.getShippingStreet() + '\n' + account.getShippingCity() + ", " + account.getShippingState() + " " + account.getShippingPostalCode() + '\n' + account.getShippingCountry()),
-                "Адрес доставки не совпадает");
+                "Shipping address doesn't match");
 
     }
 

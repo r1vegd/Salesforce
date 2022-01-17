@@ -9,13 +9,12 @@ import static org.testng.Assert.assertTrue;
 @Log4j2
 public class LoginTest extends BaseTest {
 
-    @Test(description = "этот тест проверяет вход на сайт")
+    @Test(description = "User inputs login and password and authorizes on platform")
     public void login() {
         boolean isHomePageOpened = loginPage
                 .open()
-                .login("rivegd1-30cu@force.com", "dev123123123")
+                .login(LOGIN, PASSWORD)
                 .isPageOpen();
-
-        assertTrue(isHomePageOpened, "Страница HomePage не открылась");
+        assertTrue(isHomePageOpened, "'Home' Page isn't open");
     }
 }
