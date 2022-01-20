@@ -28,7 +28,6 @@ public class Dropdown {
         driver.findElement(By.xpath(String.format(dropdownAccountPageLocator, this.label))).click();
         WebDriverWait wait = new WebDriverWait(driver, 3);
         driver.findElement(By.xpath(String.format(optionAccountPageLocator, option))).click();
-
     }
 
     public void selectParentAccount(String parentAccountOption) {

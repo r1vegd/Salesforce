@@ -9,7 +9,7 @@ import tests.base.BaseTest;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-@Log4j2
+
 public class AccountTest extends BaseTest {
 
     @Test(description = "Positive account create test")

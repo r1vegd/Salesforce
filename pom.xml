@@ -40,7 +40,6 @@
         <jackson-dataformat-yaml.version>2.12.3</jackson-dataformat-yaml.version>
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <slf4j-simple.version>1.7.25</slf4j-simple.version>
-
     </properties>
 
     <dependencies>

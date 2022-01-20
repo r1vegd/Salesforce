@@ -6,7 +6,7 @@ import tests.base.BaseTest;
 
 import static org.testng.Assert.assertTrue;
 
-@Log4j2
+
 public class LoginTest extends BaseTest {
 
     @Test(description = "User inputs login and password and authorizes on platform")

@@ -9,6 +9,7 @@ public class ContactFactory {
     static Faker faker = new Faker();
 
     public static Contact getContact() {
+        log.info(">>>>>>>Filling new contact data");
         return Contact.builder()
                 .salutation("Mr.")
                 .firstName(faker.witcher().witcher())

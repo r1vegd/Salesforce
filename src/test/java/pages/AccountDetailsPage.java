@@ -28,39 +28,47 @@ public class AccountDetailsPage extends BasePage {
 
     @Override
     public boolean isPageOpen() {
+        log.info(">>>>>>>Account details page has opened");
         return isExist(DETAILS_LINK);
     }
 
     public String getFiledValueByName(String fieldName) {
+        log.info(String.format(">>>>>>>Get from %s field", fieldName));
         return driver.findElement(By.xpath(String.format(fieldValue, fieldName))).getText();
     }
 
     public String getDetailsWebsite() {
+        log.info(">>>>>>>Get Details Website");
         return driver.findElement(By.xpath(String.format(websiteDetailsLocator))).getText();
     }
 
     public String getDetailsParentAccount() {
+        log.info(">>>>>>>Get Details Parent Accout");
         return driver.findElement(By.xpath(String.format(parentAccountDetailsLocator))).getText();
     }
 
     public String getDetailsPhone() {
-        log.info("Get Details Phone");
+        log.info(">>>>>>>Get Details Phone");
         return driver.findElement(By.xpath(String.format(phoneDetailsLocator))).getText();
     }
 
     public String getDetailsEmployees() {
+        log.info(">>>>>>>Get Details Employees");
         return driver.findElement(By.xpath(String.format(employeesDetailsLocator))).getText();
     }
 
     public String getFieldAddressValue(String fieldAddress) {
+        log.info(String.format(">>>>>>>Get %s from address field", fieldAddress));
         return driver.findElement(By.xpath(String.format(fieldAddressValue, fieldAddress))).getText();
     }
 
     public String getDetailsFax() {
+        log.info(">>>>>>>Get Details Fax");
         return driver.findElement(By.xpath(String.format(faxDetailsLocator))).getText();
     }
 
     public String getDetailsAnnualRevenue() {
+        log.info(">>>>>>>Get Details Annual Revenue");
         return driver.findElement(By.xpath(String.format(annualRevenueDetailsLocator))).getText();
     }
 

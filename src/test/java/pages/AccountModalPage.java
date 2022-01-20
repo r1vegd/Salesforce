@@ -18,10 +18,12 @@ public class AccountModalPage extends BasePage {
 
     @Override
     public boolean isPageOpen() {
+        log.info(">>>>>>>New account creation page has opened");
         return isExist(MODAL_TITLE);
     }
 
     public AccountDetailsPage create(Account account) {
+        log.info(">>>>>>>Filling new account data");
         new Input(driver, "Account Name").write(account.getAccountName());
         new Dropdown(driver, "Parent Account").selectParentAccount(account.getParentAccount());
         new Input(driver, "Phone").write(account.getPhone());
@@ -47,6 +49,7 @@ public class AccountModalPage extends BasePage {
     }
 
     public AccountDetailsPage clickSave() {
+        log.info(">>>>>>>Click on the save new account button");
         driver.findElement(SAVE_BUTTON).click();
         return new AccountDetailsPage(driver);
     }

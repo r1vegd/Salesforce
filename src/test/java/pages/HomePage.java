@@ -13,12 +13,14 @@ public class HomePage extends BasePage {
     }
 
     public HomePage open() {
+        log.info(">>>>>>>Open home page");
         driver.get(BASE_URL + "/lighting/page/home");
         return this;
     }
 
     @Override
     public boolean isPageOpen() {
+        log.info(">>>>>>>Home page has opened");
         return isExist(MENU_HOME_LINK);
     }
 }
