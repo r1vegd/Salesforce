@@ -22,6 +22,7 @@ public class ContactModalPage extends BasePage {
     }
 
     public ContactDetailsPage create(Contact contact) {
+        log.info(">>>>>>>Filling new contact data");
         new Dropdown(driver, "None").selectContactDropdown(contact.getSalutation());
         new Input(driver, "firstName").writeContact(contact.getFirstName());
         new Input(driver, "lastName").writeContact(contact.getLastName());
@@ -55,6 +56,7 @@ public class ContactModalPage extends BasePage {
     }
 
     public ContactDetailsPage clickSave() {
+        log.info(">>>>>>>Click on the save new contact button");
         driver.findElement(SAVE_BUTTON).click();
         return new ContactDetailsPage(driver);
     }

@@ -25,10 +25,9 @@ public abstract class BasePage {
         try {
             return driver.findElement(locator).isDisplayed();
         } catch (NoSuchElementException ex) {
-            System.out.println(">>>!!!" + ex.getMessage());
+            log.info(">>>>>>>!!!" + ex.getMessage());
             return false;
         }
     }
-
 
 }

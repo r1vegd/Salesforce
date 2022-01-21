@@ -18,11 +18,13 @@ public class ContactListPage extends BasePage {
     }
 
     public ContactListPage open() {
+        log.info(">>>>>>>Contact list page has opened");
         driver.get(BASE_URL + "/lightning/o/Contact/list");
         return this;
     }
 
     public ContactModalPage clickNew() {
+        log.info(">>>>>>>Click on 'New Contact' button");
         driver.findElement(NEW_BUTTON).click();
         return new ContactModalPage(driver);
     }

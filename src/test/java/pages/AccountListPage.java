@@ -14,15 +14,18 @@ public class AccountListPage extends BasePage {
 
     @Override
     public boolean isPageOpen() {
+        log.info(">>>>>>>Account list page has open");
         return isExist(BREADCRUMBS_LABEL);
     }
 
     public AccountListPage open() {
+        log.info(">>>>>>>Account List Page is opening");
         driver.get(BASE_URL + "/lightning/o/Account/list");
         return this;
     }
 
     public AccountModalPage clickNew() {
+        log.info(">>>>>>>Click on 'New Account' button");
         driver.findElement(NEW_BUTTON).click();
         return new AccountModalPage(driver);
     }

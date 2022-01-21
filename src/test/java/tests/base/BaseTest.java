@@ -25,8 +25,10 @@ public abstract class BaseTest {
     protected ContactModalPage contactModalPage;
     protected ContactDetailsPage contactDetailsPage;
 
+    public static final String LOGIN = "rivegd1-30cu@force.com";
+    public static final String PASSWORD = "dev123123123";
 
-    @BeforeMethod
+    @BeforeMethod(description = "Setup and start browser")
     public void setUp() {
         log.info("Browser launch");
         WebDriverManager.chromedriver().setup();
@@ -45,9 +47,9 @@ public abstract class BaseTest {
         contactDetailsPage = new ContactDetailsPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, description = "Close browser")
     public void tearDown() {
-        log.info("Browser quit");
+        log.info("Browser closing");
         driver.quit();
     }
 

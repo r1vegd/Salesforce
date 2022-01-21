@@ -9,6 +9,7 @@ public class AccountFactory {
     static Faker faker = new Faker();
 
     public static Account getAccount() {
+        log.info(">>>>>>>Filling new account data");
         return Account.builder()
                 .accountName(faker.funnyName().name())
                 .parentAccount("TestAccountName")

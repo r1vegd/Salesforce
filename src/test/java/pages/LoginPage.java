@@ -18,21 +18,22 @@ public class LoginPage extends BasePage {
 
     @Override
     public boolean isPageOpen() {
+        log.info(">>>>>>>Login page has opened");
         return isExist(LOGIN_BUTTON);
     }
 
     public LoginPage open() {
+        log.info(">>>>>>>Login page opening");
         driver.get(BASE_URL);
         return this;
     }
 
     public HomePage login(String userName, String password) {
+        log.info(">>>>>>>Filling login fields");
         driver.findElement(USERNAME_INPUT).sendKeys(userName);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
         return new HomePage(driver);
-
     }
-
 
 }

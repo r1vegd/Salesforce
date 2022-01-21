@@ -9,19 +9,19 @@ import tests.base.BaseTest;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-@Log4j2
+
 public class ContactTest extends BaseTest {
 
-    @Test(description = "этот тест проверяет позитивный сценарий создания контакта")
+    @Test(description = "Positive contact create test")
     public void contactShouldBeCreated() {
         loginPage
                 .open()
-                .login("rivegd1-30cu@force.com", "dev123123123");
+                .login(LOGIN, PASSWORD);
         boolean isContactModalOpen = contactListPage
                 .open()
                 .clickNew()
                 .isPageOpen();
-        assertTrue(isContactModalOpen, "Pop-up не открылся");
+        assertTrue(isContactModalOpen, "Pop-up isn't open");
 
         Contact contact = ContactFactory.getContact();
 
@@ -29,28 +29,28 @@ public class ContactTest extends BaseTest {
                 .create(contact)
                 .isPageOpen();
         contactDetailsPage.detailsTabOpen();
-        assertTrue(isDetailsPageOpen, "Страница Details не открылась");
+        assertTrue(isDetailsPageOpen, "'Details' page isn't open");
 
         assertEquals(contactDetailsPage.getDetailsName(),
-                String.format(contact.getSalutation() + " " + contact.getFirstName() + " " + contact.getLastName(), "Имя аккаунта не совпадает"));
-        assertEquals(contactDetailsPage.getDetailsAccountName("Account Name"), contact.getAccountName(), "Account Name не совпадают");
-        assertEquals(contactDetailsPage.getDetailsDepartment("Title"), contact.getTitle(), "Title не совпадают");
-        assertEquals(contactDetailsPage.getDetailsPhone(), contact.getPhone(), "Phone не совпадают");
-        assertEquals(contactDetailsPage.getDetailsMobile(), contact.getMobile(), "Mobile не совпадают");
-        assertEquals(contactDetailsPage.getDetailsEmail(), contact.getEmail(), "Email не совпадают");
+                String.format(contact.getSalutation() + " " + contact.getFirstName() + " " + contact.getLastName(), "Account name doesn't match"));
+        assertEquals(contactDetailsPage.getDetailsAccountName("Account Name"), contact.getAccountName(), "Account name doesn't match");
+        assertEquals(contactDetailsPage.getDetailsDepartment("Title"), contact.getTitle(), "Title doesn't match");
+        assertEquals(contactDetailsPage.getDetailsPhone(), contact.getPhone(), "Phone doesn't match");
+        assertEquals(contactDetailsPage.getDetailsMobile(), contact.getMobile(), "Mobile doesn't match");
+        assertEquals(contactDetailsPage.getDetailsEmail(), contact.getEmail(), "Email doesn't match");
         assertEquals(contactDetailsPage.getDetailsContactInformation("Mailing Address"),
                 String.format(contact.getMailingStreet() + '\n' + contact.getMailingCity() + ", " + contact.getMailingState() + " " + contact.getMailingPostalCode() + '\n' + contact.getMailingCountry()),
-                "Mailing Address не совпадает");
+                "Mailing Address doesn't match");
         assertEquals(contactDetailsPage.getDetailsOtherInformation("Mailing Address"),
                 String.format(contact.getOtherStreet() + '\n' + contact.getOtherCity() + ", " + contact.getOtherState() + " " + contact.getOtherPostalCode() + '\n' + contact.getOtherCountry()),
-                "Other Address не совпадает");
-        assertEquals(contactDetailsPage.getDetailsFax(), contact.getFax(), "Fax не совпадают");
-        assertEquals(contactDetailsPage.getDetailsHomePhone("Home Phone"), contact.getHomePhone(), "Home Phone не совпадают");
-        assertEquals(contactDetailsPage.getDetailsOtherPhone("Other Phone"), contact.getOtherPhone(), "Other Phone не совпадают");
-        assertEquals(contactDetailsPage.getDetailsAsstPhone("Asst. Phone"), contact.getAsstPhone(), "Asst. Phone не совпадают");
-        assertEquals(contactDetailsPage.getDetailsAssistant("Assistant"), contact.getAssistant(), "Assistant не совпадают");
-        assertEquals(contactDetailsPage.getDetailsDesc("Description"), contact.getDescription(), "Description не совпадают");
-        assertEquals(contactDetailsPage.getDetailsDepartment("Department"), contact.getDepartment(), "Department не совпадают");
+                "Other Address doesn't match");
+        assertEquals(contactDetailsPage.getDetailsFax(), contact.getFax(), "Fax doesn't match");
+        assertEquals(contactDetailsPage.getDetailsHomePhone("Home Phone"), contact.getHomePhone(), "Home Phone doesn't match");
+        assertEquals(contactDetailsPage.getDetailsOtherPhone("Other Phone"), contact.getOtherPhone(), "Other Phone doesn't match");
+        assertEquals(contactDetailsPage.getDetailsAsstPhone("Asst. Phone"), contact.getAsstPhone(), "Asst. Phone doesn't match");
+        assertEquals(contactDetailsPage.getDetailsAssistant("Assistant"), contact.getAssistant(), "Assistant doesn't match");
+        assertEquals(contactDetailsPage.getDetailsDesc("Description"), contact.getDescription(), "Description doesn't match");
+        assertEquals(contactDetailsPage.getDetailsDepartment("Department"), contact.getDepartment(), "Department doesn't match");
     }
 
 }
